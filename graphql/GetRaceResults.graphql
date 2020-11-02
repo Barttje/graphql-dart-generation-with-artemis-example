@@ -1,0 +1,12 @@
+query RaceResultsByRaceAndDriver($drivers: [String!]) {
+    Season {
+        Races {
+            RaceResults(order_by: {Race: {round: asc}}, where: {Driver: {name: {_in: $drivers}}}) {
+                Driver {
+                    name
+                }
+                points
+            }
+        }
+    }
+}
